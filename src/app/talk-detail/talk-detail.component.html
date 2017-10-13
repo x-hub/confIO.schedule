@@ -1,0 +1,30 @@
+<div class="content-detail">
+
+  <div>
+    <h1>{{Detail?.talk?.title}}</h1>
+    <h3>{{Detail?.talk?.track}}</h3>
+    <div class="contenu">
+      <div class="detail"> <img  title="{{Detail?.talk?.track}}" height="30px" width="30px" attr.src="{{Imgs[Detail?.talk?.trackId]}}" />{{Detail?.talk?.talkType}}</div>
+      <div class="room">
+        <span style="float:left;">{{Detail?.roomName}}</span>
+        <span style="float:right;">
+              {{Detail?.fromTimeMillis | date:'h'}}<small>h{{Detail?.fromTimeMillis | date:'mm'}}</small> -
+              {{Detail?.toTimeMillis | date:'h'}}<small>h{{Detail?.toTimeMillis | date:'mm'}}</small>
+              </span>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="speakers">
+      <div (click)="toSpeaker(speaker)" *ngFor="let speaker of Detail?.talk?.speakers" class="speaker">
+        <img [appLazyImg]="speaker?.link?.href" width="60" height="60"
+             src="assets/imgs/loading.gif" />
+        <h1>{{speaker?.link?.title}} </h1>
+      </div>
+    </div>
+  </div>
+  <p [innerHTML]="Detail?.talk?.summaryAsHtml">
+    Extreme Carpaccio est un coding game dans lequel les participants doivent découper un problème donné et implémenter la solution de façon itérative.
+  </p>
+
+
+</div>

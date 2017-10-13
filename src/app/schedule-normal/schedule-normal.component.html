@@ -1,0 +1,72 @@
+<div class="schedule-content">
+
+  <div class="filters">
+
+    <div class="typo">Tracks :</div>
+
+    <div class="type">
+      <ul class="all">
+
+        <li *ngFor="let track of tracks">
+          <label>
+            <input (click)="toggleTracks(track?.id,check.checked)" type="checkbox" [checked]="!track?.selected" #check>
+            <span class="event"  title="{{track?.title}}" data-bg="cat-all">
+              <img  title="{{track?.title}}" height="20px" width="20px" attr.src="{{Imgs[track?.id]}}" />
+              <span>{{track?.title}}</span>
+            </span>
+
+          </label>
+        </li>
+      </ul>
+    </div>
+    <!--<div class="fav"><i class="fa fa-star" aria-hidden="true"></i> <span>My Collection</span></div>-->
+
+  </div>
+  <div class="filters">
+
+    <div class="typo">Talks :</div>
+
+    <div class="type">
+      <ul class="all">
+
+        <li *ngFor="let talk of talks">
+          <label>
+            <input (click)="toggleTalks(talk?.label,check.checked)" type="checkbox" [checked]="!talk?.selected" #check>
+            <span style="padding: 7px 5px" class="event"  title="{{talk?.label}}" data-bg="cat-all">{{talk?.label}}
+            </span>
+
+          </label>
+        </li>
+      </ul>
+    </div>
+    <!--<div class="fav"><i class="fa fa-star" aria-hidden="true"></i> <span>My Collection</span></div>-->
+
+  </div>
+  <div class="dates">
+    <div class="row">
+      <a (click)="loading=true;closeLoading();" *ngFor="let day of days;let i=index" [routerLink]="['/day',day]" [routerLinkActive]="['click']"> {{day}}</a>
+    </div>
+  </div>
+  <app-rooms #room></app-rooms>
+  <router-outlet></router-outlet>
+
+  <div *ngIf="loading" class="loading">
+    <div class="cssload-thecube">
+      <div class="cssload-cube cssload-c1"></div>
+      <div class="cssload-cube cssload-c2"></div>
+      <div class="cssload-cube cssload-c4"></div>
+      <div class="cssload-cube cssload-c3"></div>
+    </div>
+  </div>
+</div>
+<div #notif  [ngClass]="{'hidden':!showNotif}" class="demo_changer">
+  <div (click)="showMessage(notif)"  class="demo-icon">
+    <span class="notif"></span>
+    <i class="fa fa-fog fa-bell" aria-hidden="true"></i>
+  </div>
+  <div class="form_holder">
+    <h4>There are a training Sessions Check them <span [routerLink]="['/training']" style="color: #E37B00;cursor: pointer">Here</span>
+    </h4>
+  </div>
+</div>
+

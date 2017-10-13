@@ -1,0 +1,62 @@
+.speaker{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  margin-bottom: 10px;
+}
+.speaker .user{
+
+  width: 300px;
+  min-width: 200px;
+  flex: 1 1 auto;
+}
+.speaker  div.talks{
+  display: flex;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 8px 6px;
+  font-size: 0.92em;
+  line-height: 1em;
+  color: #fff;
+  border-radius: 4px;
+  background-color: #dd9933;
+  text-transform: capitalize;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.user   img {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  display: block;
+  margin: 0 auto 0px;
+  overflow: hidden;
+}
+.user   .user-info{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+.user  .user-info h1{
+  margin-top: 0;
+  margin-right: 10px;
+}
+.user  .social{
+  text-align: center;
+  margin-bottom: 15px;
+}
+.user .social i{
+  margin: 1px 3px;
+}
+
+
+
+.speaker .bio{
+  margin: 0px 4px;
+  flex: 100;
+}

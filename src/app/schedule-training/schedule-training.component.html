@@ -1,0 +1,87 @@
+<div class="body">
+
+  <ul class="nav">
+
+    <li>
+      <span>
+        <span><i class="fa fa-clock-o"></i><span>  07<small>h:30</small> - 09<small>h:30</small></span></span>
+        <span>Breakfast</span>
+      </span>
+    </li>
+    <li>
+      <span>
+        <span><i class="fa fa-clock-o"></i><span>  12<small>h:30</small> - 02<small>h:00</small></span></span>
+        <span>Lunch</span>
+      </span>
+    </li>
+    <li>
+      <span>
+        <span><i class="fa fa-clock-o"></i><span>  04<small>h:00</small> - 04<small>h:30</small></span></span>
+        <span>Coffee</span>
+      </span>
+    </li>
+
+
+
+  </ul>
+  <div class="items">
+
+    <!--<div class="event-item">
+      <div class="room"><span>Room 1</span></div>
+     <h2>Test</h2>
+    </div>
+    -->
+    <div class="session-item-wrapper" *ngFor="let slot of slots">
+      <div class="icon">
+        <img width="45" height="45" alt=""  attr.src="{{Imgs[slot?.talk?.trackId] || Imgs['java']}}">
+      </div>
+      <article class="session">
+
+        <div class="entry-content clearfix">
+          <div class="left">
+            <div class="time"><i class="fa fa-clock-o"></i>
+              <span>
+                {{slot.fromTimeMillis | date:'hh' }}<small>&nbsp;h&nbsp;{{slot.fromTimeMillis | date:'mm' }}</small>
+                  - {{slot.toTimeMillis | date:'hh' }}<small>&nbsp;h&nbsp;{{slot.toTimeMillis | date:'mm' }}</small>
+
+
+            </span>
+            </div>
+            <div class="stitle space-5"><i class="fa fa-map-marker"></i>
+              {{slot.roomName}}
+            </div>
+            <!-- speakers -->
+            <div class="stitle"><i class="fa fa-microphone"></i>speakers</div>
+            <div class="speakers">
+              <div class="speaker" *ngFor="let speaker of slot?.talk?.speakers">
+                  <img (click)="toSpeaker(speaker)" [appLazyImg]="speaker?.link?.href" width="60" height="60" src="http://venusdemo.com/eventiz/demo/wp-content/uploads/2015/12/speaker-1-200x200.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="speaker-1">
+                <span>{{speaker?.name}}</span>
+              </div>
+
+            </div>
+          </div>
+          <div class="right">
+            <h3 class="entry-title">{{slot?.talk?.title}}</h3>
+          <!--  On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those ...
+       -->
+            <div class="entry-body">
+              {{slot?.talk.summary}}
+            </div>
+          </div>
+
+          </div>
+      </article>
+    </div>
+
+  </div>
+</div>
+<modal #modal2 id="content">
+  <div class="modal-component">
+    <div class="modal-body">
+      <i (click)="modal2.close()" style="position: absolute; right: 3px;top:3px; cursor: pointer" class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
+      <ng-template #detailModal>
+      </ng-template>
+    </div>
+  </div>
+  <div class="modal-background"></div>
+</modal>

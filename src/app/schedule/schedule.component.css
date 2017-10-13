@@ -1,0 +1,334 @@
+
+.schedule{
+  position: relative;
+  padding: 2px;
+}
+
+.schedule .hours .item{
+  position: relative;
+  display: block;
+  width: 100%;
+  background: url(../../assets/imgs/dash.png)  rgba(245,245,245,0.3) repeat-x 0 0;
+  height: 360px;
+}
+.schedule .hours .item span{
+  position: absolute;
+  top: -24px;
+  left: -70px;
+  padding-right: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.schedule .event {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+}
+.schedule .event .event-item{
+  background: #fff;
+  box-shadow: 5px 5px 0 #e3e3e3;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  z-index: 20;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  transition: all .5s ease-in;
+  overflow: hidden;
+}
+
+
+.schedule .event .event-item:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: #000;
+  opacity: 0;
+  transition: opacity .2s linear;
+  z-index: 2;
+}
+.schedule .event .event-top{
+  color: white;
+  padding: 6px 0;
+  text-align: center;
+  background: #626262;
+  border-bottom: 1px dashed #FFF;
+
+
+}
+.schedule .event .event-center {
+  padding: 12px 0;
+  text-align: center;
+  overflow: hidden;
+  font-weight: bold;
+}
+.schedule .event  a.event-speaker-pic {
+  z-index: 4;
+}
+.schedule .event .event-speaker-pic-small {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+}
+.schedule .event .event-speaker-pic {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  color: #fff;
+}
+.schedule .event a {
+  text-decoration: underline;
+  color: #515253;
+  margin:1px 3px;
+
+}
+.schedule .event  .event-speaker-pic:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4) url(../../assets/imgs/plus.png) no-repeat center center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.schedule .event .event-speaker-pic img {
+  display: block;
+}
+.schedule .event img,.schedule .event  a img {
+  border: 0;
+}
+.schedule .event img {
+  height: auto;
+}
+.schedule .event  .event-btm {
+  position: relative;
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 2px;
+  border-top: 1px dashed #e4e4e4;
+  z-index: 4;
+  overflow: hidden;
+  min-height: 40px;
+}
+.schedule .event .event-item .event-hours {
+  line-height: 1em;
+  margin-bottom: 15px;
+}
+.schedule .event .event-hours {
+  font-size: 0.95em;
+  color: #a6a6a6;
+}
+.schedule .event .event-speakers {
+  text-align: center;
+}
+.schedule .event .event-speaker-wrap .event-speaker-name {
+  display: block;
+  vertical-align: middle;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+.schedule .event .event-speaker-name {
+  margin-bottom: 5px;
+  line-height: 1.1em;
+  font-size: 0.9em;
+  color: #a6a6a6;
+  font-style: italic;
+}
+
+.schedule .event .event-title.dt {
+  display: block;
+  word-break: break-all;
+}
+.schedule .event .event-title {
+  padding: 0 5px;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  line-height: 1.4em;
+  text-transform: capitalize;
+}
+@media screen and (max-width: 1300px){
+  .schedule .event  .event-title.dt {
+    display: none;
+
+  }
+  .schedule .event  .event-title.mb {
+    display: block;
+  }
+}
+
+
+
+.schedule .event .event-title.mb {
+  display: none;
+}
+.schedule .event .event-metas {
+  margin-bottom: 6px;
+  text-transform: capitalize;
+  font-size: 0.9em;
+  line-height: 1em;
+  color: #a6a6a6;
+}
+.schedule .event .event-typo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 6px;
+  font-size: 0.92em;
+  line-height: 1em;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 4px;
+  background-color: #dd9933;
+  text-transform: capitalize;
+  text-align: center;
+}
+.schedule .event .event-typo img{
+  height: 30px;
+  width: 30px;
+}
+.schedule .event .event-item .info {
+  display: flex;
+  justify-content: space-between;
+  z-index: 4;
+  padding: 3px 6px;
+}
+.schedule .event .event-item .info i{
+  font-size: 1.3em;
+  color: #CFCECE;
+  cursor: pointer;
+}
+.schedule .event .event-item .info i.google:hover{
+  color: #D64533;
+}
+.schedule .event .event-item .info i.twitter:hover{
+  color: #1DA1F2;
+}
+.schedule .event .event-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+  cursor: pointer;
+}
+.schedule .event a {
+  text-decoration: underline;
+  color: #515253;
+}
+
+.schedule .event .lunch{
+  position: absolute;
+  top:1440px;
+  height: 340px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items:center;
+  left: 0;
+  padding: 0 200px;
+  background: #fff;
+  text-align: center;
+  z-index: 10;
+}
+.schedule .event .lunch:before{
+  background: url(../../assets/imgs/all-lunch-afterwork-left.jpg) no-repeat center center;
+  left: 0;
+  content: '';
+  position: absolute;
+  display: inline-block;
+  width: 188px;
+  bottom: 0;
+  top: 0;
+}
+.schedule .event .lunch:after{
+  content: '';
+  position: absolute;
+  display: inline-block;
+  width: 188px;
+  bottom: 0;
+  top: 0;
+  background: url(../../assets/imgs/all-lunch-afterwork-right.jpg) no-repeat center center;
+  right: 0;
+}
+
+
+.schedule .event .lunch .img{
+  max-width: 200px;
+  height: 120px;
+  margin-bottom: 0px;
+}
+.schedule .event .lunch .lunch-text{
+  position: relative;
+  color: #000;
+  font-size: 2.3em;
+}
+@media screen and (max-width: 700px){
+  .schedule .event .lunch:before{
+    content: none;
+  }
+  .schedule .event .lunch:after{
+    content: none;
+  }
+  .schedule .event .lunch{
+    padding: 2px;
+  }
+
+
+
+}
+
+
+modal {
+  display: none;
+}
+
+.modal-component {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: auto;
+}
+.modal-body {
+  position: relative;
+  padding: 20px;
+  background-color: #F5F5F5;
+  margin: 40px;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.75;
+  z-index: 900;
+}
+
+
+body.modal-open {
+  overflow: hidden;
+}

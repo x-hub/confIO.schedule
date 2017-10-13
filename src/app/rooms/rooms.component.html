@@ -1,0 +1,12 @@
+<div class="paging">
+  <div class="row">
+    <ul class="nav">
+      <li (click)="OpacityPrevious ? null :Parent.closeLoading(400);Previous()" [ngClass]="{disable:OpacityPrevious}" >‹&nbsp;<span>Previous rooms</span> </li>
+      <li (click)="OpacityNext ? null:Parent.closeLoading(400);Next()"  [ngClass]="{disable:OpacityNext}" ><span>Next rooms</span> &nbsp;›</li>
+    </ul>
+  </div>
+</div>
+
+<ul class="salles">
+  <li *ngFor="let room of Rooms;let i = index" class="title">{{room?.roomName}}</li>
+</ul>

@@ -1,0 +1,20 @@
+<div class="speaker">
+  <div class="user">
+    <img width="235" height="235" [src]="Speaker?.avatarURL" />
+    <div class="user-info">
+      <h1>{{Speaker?.lastName}} </h1> <h2> {{Speaker?.firstName}}</h2>
+    </div>
+    <p style="text-align: center; margin-top: -10px">@{{Speaker?.company}}</p>
+    <div class="social">
+      <a target="_blank" attr.href="https://twitter.com/{{Speaker?.twitter}}">  <i style="color:#1DA1F2;" class="twitter" class="fa fa-twitter-square fa-3x"></i></a>
+      <a target="_blank" attr.href={{Speaker?.blog}} ><i style="color: #000000" class="fa fa-address-card-o fa-3x"></i></a>
+    </div>
+
+    <div (click)="talkDetail(talk)"  style="cursor: pointer" *ngFor="let talk of Speaker?.acceptedTalks" class="talks">
+      {{talk?.title}}
+    </div>
+  </div>
+  <div class="bio" [innerHTML]="Speaker?.bioAsHtml">
+
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="schedule" *ngIf="Houres.length">
+  <div class="event">
+    <div *ngFor="let houre of Houres;let i = index" class="hours">
+      <div  class="item" [ngStyle]="{height:houre.height+15+'px'}">
+        <span>
+          {{houre.fromTimeMillis | date:'hh' }}<small>&nbsp;h&nbsp;{{houre.fromTimeMillis | date:'mm' }}</small>
+
+        </span>
+        <br>
+      </div>
+    </div>
+      <div *ngFor="let items of Schedule;let i=index;">
+
+      <ng-container  *ngFor="let item of items;let last=last">
+        <div *ngIf="item.break == null"  attr.data-type="{{item?.talk?.talkType}}"   attr.data-col="{{i}}"   [ngStyle]="{opacity:item.opacity,top:calculeTop(item)+3+'px', height:caluleHoursHeight(item)+'px'}"   class="event-item">
+     <!--      <div class="event-top">
+            {{item?.talk?.talkType}}
+          </div>  -->
+          <div  class="event-center ">
+            {{last == true ? jQueryResize() : null}}
+           <div class="event-hours ">
+              {{item?.fromTimeMillis | date:'h'}}<small>h{{item?.fromTimeMillis | date:'mm'}}</small> -
+              {{item?.toTimeMillis | date:'h'}}<small>h{{item?.toTimeMillis | date:'mm'}}</small>
+            </div>
+
+                <div *ngIf="item?.talk" class="event-speakers">
+                  <a style="cursor: pointer"   *ngFor="let speaker of item.talk.speakers"  class="event-speaker-pic event-speaker-pic-small" title="{{speaker.name}}">
+                    <img [appLazyImg]="speaker?.link?.href" width="40" height="40"/>
+                  </a>
+                </div>
+                <ng-container *ngIf="item?.talk && item.talk.speakers.length <= 3">
+                  <div  *ngFor="let speaker of item.talk.speakers" class="event-speaker-name">{{speaker.name}}</div>
+                </ng-container>
+                <ng-container *ngIf="item?.talk" >
+            <span  class="event-title dt" >
+              {{item.talk.title}}												</span>
+                  <span class="event-title mb" >
+              {{item.talk.title}}														</span>
+                  <span class="event-title dt" *ngIf="item?.talk?.talkType =='Keynote'">
+                <b>Room : </b>  {{item?.roomName}}
+                <b>Room : </b>  {{item?.roomName}}
+              </span>
+                </ng-container>
+              <p *ngIf="!item?.talk">TBD</p>
+
+          </div>
+          <div *ngIf="item.talk" class="event-btm">
+            <!--  <div class="event-metas">		{{item?.talk?.talkType}}
+              </div>-->
+
+            <span   class="event-typo"><span>{{item?.talk?.track == null ? "null" : item?.talk?.talkType }} </span><span>|</span>
+            <img  title="{{item?.talk?.track}}" height="30px" width="30px" attr.src="{{Imgs[item?.talk?.trackId]}}" />
+            </span>
+            <div class="info">
+              <a  title="Save to google calendar" target="_blank" attr.href="{{'http://www.google.com/calendar/event?action=TEMPLATE&text='+item?.talk?.talkType+
+                '&dates='+(item?.fromTimeMillis | date:'yMMdd')+'T'+(item?.fromTimeMillis | date:'HHmmss')+
+                'Z/'+(item?.toTimeMillis | date:'yMMdd')+'T'+(item?.toTimeMillis | date:'HHmmss')+'Z&details='+item?.talk?.title+'&location='+item?.roomName+'&trp=false&sprop=&sprop=name:'}}
+"><i class="fa fa-calendar google" aria-hidden="true"></i></a>
+             <!-- <i class="fa fa-star" aria-hidden="true"></i>-->
+              <a  (click)="shareOnTwitter(item?.talk?.id,item?.talk?.title,item?.talk?.speakers)" title="Share on twitter">
+                <i  class="fa fa-twitter-square twitter" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <a *ngIf="item.talk" (click)="detail(item)"  title="{{item?.talk?.title}}" class="event-link" ></a>
+        </div>
+        <div *ngIf="item.break != null" class="lunch" [ngStyle]="{opacity:item.opacity,top:calculeTop(item)+3+'px', height:caluleHoursHeight(item)+'px'}" >
+        <img [ngStyle]="{marginTop : 'none'}" class="img" attr.src="{{BreakImgs[item.break.id]}}">
+
+          <div class="lunch-text">
+      <span>
+        {{item?.break?.nameEN}}<br>
+      </span>
+          </div>
+        </div>
+      </ng-container>
+      </div>
+
+
+
+</div>
+
+</div>
+
+<modal #modal2 id="content">
+  <div class="modal-component">
+    <div class="modal-body">
+      <i (click)="modal2.close()" style="position: absolute; right: 3px;top:3px; cursor: pointer" class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
+        <ng-template #detailModal>
+        </ng-template>
+    </div>
+  </div>
+  <div class="modal-background"></div>
+</modal>

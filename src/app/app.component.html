@@ -1,0 +1,43 @@
+<header id="header" class="nav-stacked affix" data-spy="affix" data-offset-top="15">
+  <!-- Navigation -->
+  <nav id="navigation_bar" class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="logo">
+            <a href="./index.html"><img [src]="logoImg" alt="image" /></a>
+        </div> <!-- /Logo -->
+        <button (click)="slide()" id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="follow_us">
+        <ul>
+          <li><a title="facebook" target="_blank" href="https://www.facebook.com/DevoxxMA"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+          <li><a title="twitter" target="_blank" href="https://twitter.com/DevoxxMA"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+          <li><a title="youtube" target="_blank" href="https://www.youtube.com/user/JMaghreb"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+          <li><a title="flickr" target="_blank" href="https://www.flickr.com/photos/127834083@N04"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+
+      <div #navigation class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li><a href="https://cfp.devoxx.ma/2017/index.html" class="js-target-scroll">Home</a></li>
+          <li><a [routerLinkActive]="['selected']" [routerLink]="['']" class="js-target-scroll">Schedule</a></li>
+          <li [ngClass]="{'hidden':!showScheduleTraining}"><a [routerLinkActive]="['selected']"  [routerLink]="['training']" class="js-target-scroll">Training Schedule</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navigation end -->
+
+</header>
+<div style="margin-top: 100px;" class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
+<div #arrowTop   class="arrow-top">
+  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+</div>
+

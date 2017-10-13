@@ -1,0 +1,63 @@
+.content-detail{
+  display: flex;
+  margin: auto;
+  flex-wrap : wrap;
+  align-content: center;
+}
+.content-detail > div:first-child{
+  width: 300px;
+  min-width: 200px;
+  flex: 1 1 auto;
+  box-sizing: border-box
+
+}
+.content-detail h1{
+  margin-left: 10px;
+  word-wrap: break-word
+}
+.content-detail h3{
+  color:#F32C0E;
+  margin-top: 1px;
+  margin-left: 15px;
+}
+.content-detail .contenu{
+  box-sizing: border-box;
+  border-top: 1px dashed #CCC;
+
+}
+.content-detail .contenu .detail{
+  background: #DD9933;
+  margin-top: 10px;
+  color: #FFF;
+  padding: 12px 6px;
+  display: flex;
+  align-items: center
+}
+.content-detail .contenu .room{
+  padding: 10px 12px;
+}
+.content-detail  p{
+  padding: 15px 12px;
+  flex: 100;
+}
+.content-detail .speakers{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.content-detail .speakers .speaker{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  cursor: pointer;
+}
+.content-detail .speakers .speaker img{
+  border-radius: 50%;
+}
+.content-detail .speakers .speaker h1{
+  text-align: center;
+  font-size: 0.9em;
+}
