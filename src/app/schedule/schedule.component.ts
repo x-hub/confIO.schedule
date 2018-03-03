@@ -16,9 +16,9 @@ import {ActivatedRoute} from '@angular/router';
 import {ModalService} from '../service/modal.service';
 import {TalkDetailComponent} from '../talk-detail/talk-detail.component';
 
-declare let $: any;
-declare let _: any;
-declare let encodeURIComponent: any;
+declare const $: any;
+declare const _: any;
+declare const encodeURIComponent: any;
 
 
 @Component({
@@ -31,7 +31,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   public BreakImgs;
   public Houres = [];
   public Schedule = [];
-  public rooms: Room[]=[];
+  public rooms: Room[]= [];
   public tracksId: any[] = [];
   public talks: any[] = [];
   public Keynotes: any = [];
@@ -52,16 +52,16 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   }
 
   getSchedule(): Observable<any> {
-    let Request = [];
+    const Request = [];
     this.rooms.forEach((room, index) => {
-      Request.push(this.Http.ScheduleByRoomDay(room["roomId"], this.day));
+      Request.push(this.Http.ScheduleByRoomDay(room['roomId'], this.day));
     });
     return Observable.forkJoin(Request);
   }
 
   caluleHoursHeight(timeObject: any) {
     if (timeObject.break) {
-      let Houre = _.find(this.Houres, function (user) {
+      const Houre = _.find(this.Houres, function (user) {
         return timeObject.fromTimeMillis >= user.fromTimeMillis && timeObject.toTimeMillis <= user.toTimeMillis;
       });
       if (Houre) {
@@ -77,16 +77,16 @@ export class ScheduleComponent implements OnInit, OnDestroy {
       return (e.fromTimeMillis < timeObject.fromTimeMillis && e.toTimeMillis < timeObject.toTimeMillis );
     });
     array = _.map(array, 'height');
-    let top = _.sum(array);
+    const top = _.sum(array);
     return top + (15 * array.length);
   }
 
   jQueryResize() {
-    let $totalWidth = $('schedule').width();
-    let $width = $('.salles .title').eq(0).width();
+    const $totalWidth = $('schedule').width();
+    const $width = $('.salles .title').eq(0).width();
     $('.schedule .event .event-item').each(function (a, elt) {
-      let coef = $(elt).data('col');
-      let type = $(elt).data('type');
+      const coef = $(elt).data('col');
+      const type = $(elt).data('type');
       if (type == 'Keynote' || type == 'break') {
         $(elt).css({left: 0, right: '10px'});
       } else
@@ -109,7 +109,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
 
     this.ActivatedRoute.params.switchMap((e) => {
       this.day = e['day'];
-      this.Houres = []
+      this.Houres = [];
       return this._Helper.roomChange;
     }).switchMap((e) => {
       this.rooms = e;
@@ -135,13 +135,13 @@ export class ScheduleComponent implements OnInit, OnDestroy {
         };
       }).sortBy('fromTimeMillis').value();
       this.Houres = [];
-      let HouresKeynotes = _(this.Keynotes).uniqBy('fromTimeMillis').map((e) => {
+      const HouresKeynotes = _(this.Keynotes).uniqBy('fromTimeMillis').map((e) => {
         return {
           fromTimeMillis: e.fromTimeMillis,
           toTimeMillis: e.toTimeMillis
         };
       }).sortBy('fromTimeMillis').value();
-      let HouresBreaks = _(this.Breaks).uniqBy('fromTimeMillis').map((e) => {
+      const HouresBreaks = _(this.Breaks).uniqBy('fromTimeMillis').map((e) => {
         return {
           fromTimeMillis: e.fromTimeMillis,
           toTimeMillis: e.toTimeMillis
@@ -156,7 +156,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
           e.height = this.caluleHoursHeight(e);
           this.Houres.push(e);
         } else {
-          let obj = this.Houres[this.Houres.length - 1];
+          const obj = this.Houres[this.Houres.length - 1];
           if (obj.toTimeMillis > e.fromTimeMillis) {
             obj.toTimeMillis = Math.max(e.toTimeMillis, obj.toTimeMillis);
             obj.fromTimeMillis = Math.min(e.fromTimeMillis, obj.fromTimeMillis);
@@ -172,23 +172,23 @@ export class ScheduleComponent implements OnInit, OnDestroy {
 
 
     }
-    let items = [];
+    const items = [];
     schedule.forEach((item) => {
       items.push(item.filter(i => {
-          return !((i.break !=null) || (i.talk && (i.talk.talkType === 'Keynote' || i.talk.talkType === 'Training')));
+          return !((i.break != null) || (i.talk && (i.talk.talkType === 'Keynote' || i.talk.talkType === 'Training')));
 
       }));
     });
     items.push(this.Keynotes);
     items.push(this.Breaks);
-    let talksTracks = _.union(...items);
+    const talksTracks = _.union(...items);
     this.setTalks(talksTracks);
     this.setTracks(talksTracks);
     return items;
   }
 
   setTalks(items) {
-    let talks = _(items).map('talk').filter(i => i).uniqBy('talkType').map(e => {
+    const talks = _(items).map('talk').filter(i => i).uniqBy('talkType').map(e => {
       return {
         label: e.talkType
       };
@@ -199,7 +199,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   }
 
   setTracks(items) {
-    let tracks = _(items).map('talk').filter(i => i).uniqBy('trackId').map(e => {
+    const tracks = _(items).map('talk').filter(i => i).uniqBy('trackId').map(e => {
       return {
         id: e.trackId,
         title: e.track
@@ -211,10 +211,10 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   filter(tracksId: any[], talks: any[]) {
     this.Schedule.map((items) => {
       items.forEach(function (item) {
-        let foundTrack = tracksId.find((elt) => {
+        const foundTrack = tracksId.find((elt) => {
           return item.talk && elt == item.talk.trackId;
         });
-        let foundTalk = talks.find((elt) => {
+        const foundTalk = talks.find((elt) => {
           return item && item.talk && elt.toLocaleLowerCase() == item.talk.talkType.toLocaleLowerCase();
         });
         if (foundTrack || foundTalk) item.opacity = 0.4;
@@ -229,7 +229,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
     if (talk.opacity && talk.opacity != 1) return;
     if (this.placeHolderItem) this.placeHolderItem.destroy();
     this.detailModal.clear();
-    let factoryDetail = this.ComponenetResolver.resolveComponentFactory(TalkDetailComponent);
+    const factoryDetail = this.ComponenetResolver.resolveComponentFactory(TalkDetailComponent);
     this.placeHolderItem = this.detailModal.createComponent(factoryDetail);
     this.placeHolderItem.instance.Detail = talk;
     this.placeHolderItem.instance.Parent = this.detailModal;
@@ -238,17 +238,21 @@ export class ScheduleComponent implements OnInit, OnDestroy {
 
   }
 
-  shareOnTwitter(talkId: string,title:string,speakers:any[]) {
-    let joinedSpeakers = speakers.map((e)=>e.name).join(",");
-    let bodyText=`#DevoxxMA Checkout this talk  ${title} by ${joinedSpeakers}`;
-    let currentYear = new Date().getFullYear();
-    let link = `${window['talkLink'] || "https://cfp.devoxx.ma/2017/talk"}/${talkId}`;
-    let url = `http://twitter.com/share?url=${encodeURIComponent(link)}&text=${encodeURIComponent(bodyText)}`;
-    this._Helper.openPopup(url,'',520,270);
+  shareOnTwitter(talkId: string, title: string, speakers: any[]) {
+    const joinedSpeakers = speakers.map((e) => e.name).join(',');
+
+    let bodyText = `Checkout this talk ${"\"talk\"".replace("talk",(title.length >= 55 ? title.slice(0,52).concat(" ...") :title))} by ${joinedSpeakers}`;
+    const currentYear = new Date().getFullYear();
+    //const link = `${window['talkLink'] || 'https://cfp.devoxx.ma/' + currentYear + '/talk'}/${talkId}`;
+    let link = window['talkLink'] || 'https://cfp.devoxx.ma/{year}/talk/{id}';
+    link =link.replace('{year}', currentYear).replace('{id}', talkId)
+    bodyText += ` ${link} #DevoxxMA`
+    const url = `http://twitter.com/share?url=""&text=${encodeURIComponent(bodyText)}`;
+    this._Helper.openPopup(url, '', 520, 300);
   }
 
   ngOnDestroy() {
-    this.ScheduleSubscription &&this.ScheduleSubscription.unsubscribe();
+    this.ScheduleSubscription && this.ScheduleSubscription.unsubscribe();
     this.dayChangeSubscription && this.dayChangeSubscription.unsubscribe();
     this.FiltreSubscription && this.FiltreSubscription.unsubscribe();
   }

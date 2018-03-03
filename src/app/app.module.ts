@@ -1,5 +1,5 @@
 import {BrowserModule} from "@angular/platform-browser";
-import {NgModule} from "@angular/core";
+import {LOCALE_ID, NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {HttpService} from "./service/Http.service";
@@ -19,6 +19,7 @@ import { ScheduleTrainingComponent } from './schedule-training/schedule-training
 
 import { ScheduleNormalComponent } from './schedule-normal/schedule-normal.component';
 import {ComponentRoot} from "./app.component";
+import {UTCDate} from "./pipe/UTCDate.pipe";
 
 var routes: Route[] = [
   {path :"day",component:ScheduleNormalComponent,
@@ -30,6 +31,7 @@ var routes: Route[] = [
 ]
 @NgModule({
   declarations: [
+    UTCDate,
     ComponentRoot,
     RoomsComponent,
     ScheduleComponent,
@@ -54,7 +56,7 @@ var routes: Route[] = [
     ComponentRoot
   ],
   entryComponents: [TalkDetailComponent, SpeakerDetailComponent],
-  providers: [HttpService, Helper, ModalService],
+  providers: [HttpService, Helper, ModalService, { provide: LOCALE_ID, useValue: 'ar-MA' }],
   bootstrap: [ComponentRoot]
 })
 export class AppModule {

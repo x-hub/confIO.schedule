@@ -74,16 +74,42 @@ app-rooms:after{
   border-width: 10px 16px 0 16px;
   border-color: #DD9933 transparent transparent transparent;
 }
+.paging{
+  display: flex;
+  justify-content: center;
+  padding: 4px 2px 5px;
+}
+.paging .nav{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2px 10px 15px
+}
 .paging .nav{
   text-align: center;
-  margin-bottom: 20px;
+}
+.paging .nav li{
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+.paging .nav li:nth-child(1){
+  justify-content: flex-start;
+}
+.paging .nav li:nth-child(2){
+  justify-content: flex-end;
+}
+.paging .nav li i{
+  font-size: 4em
 }
 .paging .nav .disable{
   opacity: .5;
 }
-
-.paging .nav span{
-  text-decoration: underline;
+.pagin .nav li.disable *{
   color: #211C1B;
+}
+.paging .nav li *{
+  color: #dd9028;
   cursor: pointer;
 }
+

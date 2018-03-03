@@ -3,7 +3,7 @@
     <div *ngFor="let houre of Houres;let i = index" class="hours">
       <div  class="item" [ngStyle]="{height:houre.height+15+'px'}">
         <span>
-          {{houre.fromTimeMillis | date:'hh' }}<small>&nbsp;h&nbsp;{{houre.fromTimeMillis | date:'mm' }}</small>
+          {{houre.fromTimeMillis | UTCDate:'HH'}}<small>&nbsp;h&nbsp;{{houre.fromTimeMillis | UTCDate:'mm' }}</small>
 
         </span>
         <br>
@@ -19,8 +19,8 @@
           <div  class="event-center ">
             {{last == true ? jQueryResize() : null}}
            <div class="event-hours ">
-              {{item?.fromTimeMillis | date:'h'}}<small>h{{item?.fromTimeMillis | date:'mm'}}</small> -
-              {{item?.toTimeMillis | date:'h'}}<small>h{{item?.toTimeMillis | date:'mm'}}</small>
+              {{item?.fromTimeMillis | UTCDate:'HH'}}<small>h{{item?.fromTimeMillis | UTCDate:'mm'}}</small> -
+              {{item?.toTimeMillis | UTCDate:'HH'}}<small>h{{item?.toTimeMillis | UTCDate:'mm'}}</small>
             </div>
 
                 <div *ngIf="item?.talk" class="event-speakers">
@@ -38,7 +38,6 @@
               {{item.talk.title}}														</span>
                   <span class="event-title dt" *ngIf="item?.talk?.talkType =='Keynote'">
                 <b>Room : </b>  {{item?.roomName}}
-                <b>Room : </b>  {{item?.roomName}}
               </span>
                 </ng-container>
               <p *ngIf="!item?.talk">TBD</p>
@@ -53,8 +52,8 @@
             </span>
             <div class="info">
               <a  title="Save to google calendar" target="_blank" attr.href="{{'http://www.google.com/calendar/event?action=TEMPLATE&text='+item?.talk?.talkType+
-                '&dates='+(item?.fromTimeMillis | date:'yMMdd')+'T'+(item?.fromTimeMillis | date:'HHmmss')+
-                'Z/'+(item?.toTimeMillis | date:'yMMdd')+'T'+(item?.toTimeMillis | date:'HHmmss')+'Z&details='+item?.talk?.title+'&location='+item?.roomName+'&trp=false&sprop=&sprop=name:'}}
+                '&dates='+(item?.fromTimeMillis | date:'YYYYMMDD')+'T'+(item?.fromTimeMillis | UTCDate:'HHmmss')+
+                'Z/'+(item?.toTimeMillis | date:'YYYYMMDD')+'T'+(item?.toTimeMillis | UTCDate:'HHmmss')+'Z&details='+item?.talk?.title+'&location='+item?.roomName+'&trp=false&sprop=&sprop=name:'}}
 "><i class="fa fa-calendar google" aria-hidden="true"></i></a>
              <!-- <i class="fa fa-star" aria-hidden="true"></i>-->
               <a  (click)="shareOnTwitter(item?.talk?.id,item?.talk?.title,item?.talk?.speakers)" title="Share on twitter">

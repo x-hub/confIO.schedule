@@ -1,10 +1,13 @@
 <div class="paging">
-  <div class="row">
+
     <ul class="nav">
-      <li (click)="OpacityPrevious ? null :Parent.closeLoading(400);Previous()" [ngClass]="{disable:OpacityPrevious}" >‹&nbsp;<span>Previous rooms</span> </li>
-      <li (click)="OpacityNext ? null:Parent.closeLoading(400);Next()"  [ngClass]="{disable:OpacityNext}" ><span>Next rooms</span> &nbsp;›</li>
+      <li (click)="OpacityPrevious ? null :Parent.closeLoading(400);Previous()" [ngClass]="{disable:OpacityPrevious}" >
+        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+        &nbsp;<span>Previous rooms</span> </li>
+      <li (click)="OpacityNext ? null:Parent.closeLoading(400);Next()"  [ngClass]="{disable:OpacityNext}" >
+        <span>Next rooms</span> &nbsp;  <i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
     </ul>
-  </div>
+
 </div>
 
 <ul class="salles">

@@ -8,8 +8,8 @@
       <div class="room">
         <span style="float:left;">{{Detail?.roomName}}</span>
         <span style="float:right;">
-              {{Detail?.fromTimeMillis | date:'h'}}<small>h{{Detail?.fromTimeMillis | date:'mm'}}</small> -
-              {{Detail?.toTimeMillis | date:'h'}}<small>h{{Detail?.toTimeMillis | date:'mm'}}</small>
+              {{Detail?.fromTimeMillis | UTCDate:'hh'}}<small>h{{Detail?.fromTimeMillis | UTCDate:'mm'}}</small> -
+              {{Detail?.toTimeMillis | UTCDate:'hh'}}<small>h{{Detail?.toTimeMillis | UTCDate:'mm'}}</small>
               </span>
         <div class="clearfix"></div>
       </div>

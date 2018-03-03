@@ -145,39 +145,38 @@
   margin-bottom: 0;
 }
 .schedule .event .event-speaker-name {
-  margin-bottom: 5px;
-  line-height: 1.1em;
-  font-size: 0.9em;
-  color: #a6a6a6;
-  font-style: italic;
+margin-bottom: 5px;
+line-height: 1.1em;
+font-size: 0.9em;
+color: #a6a6a6;
+font-style: italic;
 }
 
 .schedule .event .event-title.dt {
-  display: block;
+display: block;
+word-break: break-all;
+}
+.schedule .event .event-title.mb {
+  display: none;
   word-break: break-all;
 }
 .schedule .event .event-title {
-  padding: 0 5px;
-  margin-bottom: 5px;
-  font-size: 0.9em;
-  line-height: 1.4em;
-  text-transform: capitalize;
+padding: 0 5px;
+margin-bottom: 5px;
+font-size: 0.9em;
+line-height: 1.4em;
+text-transform: capitalize;
 }
 @media screen and (max-width: 1300px){
   .schedule .event  .event-title.dt {
-    display: none;
-
-  }
-  .schedule .event  .event-title.mb {
-    display: block;
-  }
-}
-
-
-
-.schedule .event .event-title.mb {
   display: none;
+
 }
+  .schedule .event  .event-title.mb {
+  display: block;
+}
+}
+
 .schedule .event .event-metas {
   margin-bottom: 6px;
   text-transform: capitalize;

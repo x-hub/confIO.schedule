@@ -41,8 +41,8 @@
           <div class="left">
             <div class="time"><i class="fa fa-clock-o"></i>
               <span>
-                {{slot.fromTimeMillis | date:'hh' }}<small>&nbsp;h&nbsp;{{slot.fromTimeMillis | date:'mm' }}</small>
-                  - {{slot.toTimeMillis | date:'hh' }}<small>&nbsp;h&nbsp;{{slot.toTimeMillis | date:'mm' }}</small>
+                {{slot.fromTimeMillis | UTCDate:'hh' }}<small>&nbsp;h&nbsp;{{slot.fromTimeMillis | UTCDate:'mm' }}</small>
+                  - {{slot.toTimeMillis | UTCDate:'hh' }}<small>&nbsp;h&nbsp;{{slot.toTimeMillis | UTCDate:'mm' }}</small>
 
 
             </span>
