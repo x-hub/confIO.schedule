@@ -4,6 +4,16 @@
   <meta charset="utf-8">
   <title>Devoxx</title>
   <base href="/">
+    <!-- service worker registration file -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="theme-color" content="#f48c5b">
+    <link rel="manifest" href="/manifest.json">
+     <!-- *************    -->
+  
   <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
@@ -12,8 +22,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-loader/2.2.0/css-loader.css">
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"
           integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+       
   <script>
-    var apiBaseUrl = "http://xhub.ddns.net:9000"//window.location.origin;
+    var apiBaseUrl = "https://cfp.devoxx.ma"//window.location.origin;
     var eventCode = "DevoxxMA2017";
     window["config"] = {
       apiLink: {
@@ -52,9 +63,17 @@
     <root>
          <img src="/assets/imgs/loading.gif" style="margin:auto;display:block;">
     </root>
-</body>
-<script>
-
-
-</script>
+<!-- /////////////////service worker/////////////////////////// -->
+<!-- <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/ngsw-worker.js')
+    .then((registration) => {
+      console.log('SW registered');
+    })
+    .catch((err) => {
+      console.log('SW error', err);
+    });
+  }
+</script> -->
+  </body>
 </html>

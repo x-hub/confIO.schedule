@@ -1,0 +1,30 @@
+{
+    "short_name": "Speaker Room",
+    "name": "Angular 5 App",
+    "start_url": "/",
+
+    "theme_color": "#f48c5b",
+    "background_color": "#ffffff",
+
+    "display": "standalone",
+    "orientation": "portrait",
+
+    "icons": [
+        {
+          "src": "/assets/imgs/apple-icon-72x72.png",
+          "sizes": "72x72",
+          "type": "image/png"
+        },
+        {
+            "src": "/assets/imgs/android-icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/imgs/android-icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }
+        
+      ]
+}

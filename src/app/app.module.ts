@@ -16,7 +16,8 @@ import {ModalComponent} from "./directives/modal.component";
 import {TalkDetailComponent} from "./talk-detail/talk-detail.component";
 import {SpeakerDetailComponent} from "./speaker-detail/speaker-detail.component";
 import { ScheduleTrainingComponent } from './schedule-training/schedule-training.component';
-
+import { ServiceWorkerModule }  from '@angular/service-worker';
+import { environment } from '../environments/environment';
 import { ScheduleNormalComponent } from './schedule-normal/schedule-normal.component';
 import {ComponentRoot} from "./app.component";
 
@@ -48,6 +49,8 @@ var routes: Route[] = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    environment.production ? ServiceWorkerModule.register('/service-worker.js') : [],
+    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
     RouterModule.forRoot(routes)
   ],
   exports: [

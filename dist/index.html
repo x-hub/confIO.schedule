@@ -1,19 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Devoxx</title>
-  <base href="/">
-  <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
-  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-loader/2.2.0/css-loader.css">
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script>
-    var apiBaseUrl = "http://xhub.ddns.net:9000"//window.location.origin;
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Devoxx</title><base href="/"><!-- service worker registration file --><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="msapplication-starturl" content="/"><meta name="theme-color" content="#f48c5b"><link rel="manifest" href="/manifest.json"><!-- *************    --><script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script><link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-loader/2.2.0/css-loader.css"><script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script><script>var apiBaseUrl = "https://cfp.devoxx.ma"//window.location.origin;
     var eventCode = "DevoxxMA2017";
     window["config"] = {
       apiLink: {
@@ -45,16 +30,14 @@
       days: ['tuesday', 'wednesday', 'thursday'],
       logoImg: '/assets/imgs/logo.png',
       loadingImg: '/assets/imgs/loading.gif'
-    }
-  </script>
-</head>
-<body>
-    <root>
-         <img src="/assets/imgs/loading.gif" style="margin:auto;display:block;">
-    </root>
-<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
-<script>
-
-
-</script>
-</html>
+    }</script><link href="styles.acbdbfbe2086e15fc88d.bundle.css" rel="stylesheet"/></head><body><root><img src="/assets/imgs/loading.gif" style="margin:auto;display:block"></root><!-- /////////////////service worker/////////////////////////// --><!-- <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/ngsw-worker.js')
+    .then((registration) => {
+      console.log('SW registered');
+    })
+    .catch((err) => {
+      console.log('SW error', err);
+    });
+  }
+</script> --><script type="text/javascript" src="inline.1795e959031d147fea54.bundle.js"></script><script type="text/javascript" src="polyfills.95c818fb6e52c6ca0ca5.bundle.js"></script><script type="text/javascript" src="main.641248cf60c1026fcd05.bundle.js"></script></body></html>
